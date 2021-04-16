@@ -14,7 +14,6 @@ def index():
         return render_template('index.html', title='Солнечная система')
 
 
-
 @app.route('/neptune')
 def neptune():
     return "Страница планеты 'Нептун'"
