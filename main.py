@@ -2,11 +2,17 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
+autlog = False
+
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html', title='Солнечная система', text='Планета', text1='Звезда')
+    if autlog:
+        return render_template('index_autlog.html', title='Солнечная система')
+    else:
+        return render_template('index.html', title='Солнечная система')
+
 
 
 @app.route('/neptune')
