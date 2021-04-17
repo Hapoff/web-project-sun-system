@@ -68,5 +68,65 @@ def jupiter():
                            volume=rows[0][4], distance=rows[0][5], temperature=rows[0][6])
 
 
+@app.route('/mars')
+def mars():
+    con = sqlite3.connect("db/Солнечная система.db")
+    cur = con.cursor()
+    rezult = cur.execute('''SELECT * FROM Объекты WHERE ID LIKE ?''', (5,))
+    rows = cur.fetchall()
+    full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'mars.jpg')
+    return render_template('page.html', img=full_filename,
+                           title=rows[0][1], object=rows[0][1], info=rows[0][2], radius=rows[0][3],
+                           volume=rows[0][4], distance=rows[0][5], temperature=rows[0][6])
+
+
+@app.route('/earth')
+def earth():
+    con = sqlite3.connect("db/Солнечная система.db")
+    cur = con.cursor()
+    rezult = cur.execute('''SELECT * FROM Объекты WHERE ID LIKE ?''', (6,))
+    rows = cur.fetchall()
+    full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'earth.jpg')
+    return render_template('page.html', img=full_filename,
+                           title=rows[0][1], object=rows[0][1], info=rows[0][2], radius=rows[0][3],
+                           volume=rows[0][4], distance=rows[0][5], temperature=rows[0][6])
+
+
+@app.route('/venus')
+def venus():
+    con = sqlite3.connect("db/Солнечная система.db")
+    cur = con.cursor()
+    rezult = cur.execute('''SELECT * FROM Объекты WHERE ID LIKE ?''', (7,))
+    rows = cur.fetchall()
+    full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'venus.jpg')
+    return render_template('page.html', img=full_filename,
+                           title=rows[0][1], object=rows[0][1], info=rows[0][2], radius=rows[0][3],
+                           volume=rows[0][4], distance=rows[0][5], temperature=rows[0][6])
+
+
+@app.route('/mercury')
+def mercury():
+    con = sqlite3.connect("db/Солнечная система.db")
+    cur = con.cursor()
+    rezult = cur.execute('''SELECT * FROM Объекты WHERE ID LIKE ?''', (8,))
+    rows = cur.fetchall()
+    full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'mercury.jpg')
+    return render_template('page.html', img=full_filename,
+                           title=rows[0][1], object=rows[0][1], info=rows[0][2], radius=rows[0][3],
+                           volume=rows[0][4], distance=rows[0][5], temperature=rows[0][6])
+
+
+@app.route('/sun')
+def sun():
+    con = sqlite3.connect("db/Солнечная система.db")
+    cur = con.cursor()
+    rezult = cur.execute('''SELECT * FROM Объекты WHERE ID LIKE ?''', (9,))
+    rows = cur.fetchall()
+    full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'sun.jpg')
+    return render_template('page.html', img=full_filename,
+                           title=rows[0][1], object=rows[0][1], info=rows[0][2], radius=rows[0][3],
+                           volume=rows[0][4], distance=rows[0][5], temperature=rows[0][6])
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
