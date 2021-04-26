@@ -1,0 +1,88 @@
+body {
+    background-color: black;
+}
+h1 {
+    position: absolute;
+    margin-left: 480px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 40pt;
+    color: white;
+}
+
+.email {
+    position: absolute;
+    margin-top: 370px;
+    margin-left: 650px;
+    width: 380px;
+    height: 50px;
+    font-size: 16pt;
+    border-radius: 20px;
+}
+
+.pass {
+    position: absolute;
+    margin-top: 440px;
+    margin-left: 650px;
+    width: 380px;
+    height: 50px;
+    font-size: 16pt;
+    border-radius: 20px;
+}
+
+.pass_again {
+    position: absolute;
+    margin-top: 510px;
+    margin-left: 650px;
+    width: 380px;
+    height: 50px;
+    font-size: 16pt;
+    border-radius: 20px;
+}
+
+.sub {
+    position: absolute;
+    width: 380px;
+    height: 50px;
+    margin-top: 580px;
+    margin-left: 650px;
+    background-color: grey;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 16pt;
+    color: white;
+
+}
+
+.sub:hover{
+    background-color: green;
+}
+
+.log {
+    position: absolute;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    color: white;
+    margin-top: 635px;
+    margin-left: 670px;
+    cursor: pointer;
+}
+
+.reg {
+    position: absolute;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    color: white;
+    margin-top: 635px;
+    margin-left: 845px;
+    cursor: pointer;
+}
+
+.error {
+    position: absolute;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    color: red;
+    margin-top: 660px;
+    margin-left: 650px;
+}

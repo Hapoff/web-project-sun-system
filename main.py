@@ -1,6 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import sqlite3
 import os
+import hashlib
+import sqlite3
 
 IMG_FOLDER = os.path.join('static', 'img')
 
@@ -8,16 +10,128 @@ app = Flask(__name__)
 
 app.config['UPLOAD_FOLDER'] = IMG_FOLDER
 
-autlog = True
+autlog = False
+name = ""
 
 
 @app.route('/')
 @app.route('/index')
 def index():
     if autlog:
-        return render_template('index_autlog.html', title='Солнечная система')
+        return render_template('index_autlog.html', title='Солнечная система', name=name)
     else:
         return render_template('index.html', title='Солнечная система')
+
+
+@app.route('/reg', methods=['POST', 'GET'])
+def reg():
+    return render_template("reg.html", error="")
+
+
+@app.route('/reg_run', methods=['POST', 'GET'])
+def reg_run():
+    data = request.form
+
+    pas1 = hashlib.md5(data["pass"].encode()).hexdigest()
+    pas2 = hashlib.md5(data["pass_again"].encode()).hexdigest()
+
+    if pas1 == pas2:
+        if "@" in data["email"]:
+            con = sqlite3.connect("db/Пользователи.db")
+            cur = con.cursor()
+            rezult = cur.execute('''SELECT * FROM Пользователи WHERE Email LIKE ?''', (data["email"],))
+            rows = cur.fetchall()
+            if len(rows) == 0:
+                con = sqlite3.connect("db/Пользователи.db")
+                cur = con.cursor()
+                sql = '''INSERT INTO Пользователи(Имя, Email, Пароль) VALUES(?, ?, ?) '''
+                rezult = cur.execute(sql, (data["name"], data["email"], pas1))
+                con.commit()
+                global autlog, name
+                autlog = True
+                name = data["name"]
+                return render_template("succes.html", title="Вы зарегистрированы",
+                                       text="Вы успешно зарегистрировались!")
+            else:
+                render_template("reg.html", error="Такой e-mail уже зарегистрирован")
+
+        else:
+            return render_template("reg.html", error="Некорректный e-mail")
+    else:
+        return render_template("reg.html", error="Пароли не совпадают")
+
+
+@app.route('/log')
+def log():
+    return render_template("log.html")
+
+
+@app.route('/log_run', methods=['POST', 'GET'])
+def log_run():
+    data = request.form
+
+    if "@" in data["email"]:
+        print(data)
+        con = sqlite3.connect("db/Пользователи.db")
+        cur = con.cursor()
+        rezult = cur.execute('''SELECT * FROM Пользователи WHERE Email LIKE ?''', (data["email"],))
+        rows = cur.fetchall()
+        if len(rows) != 0:
+            pas1 = rows[0][3]
+            pas2 = hashlib.md5(data["pass"].encode()).hexdigest()
+            if pas1 == pas2:
+                global autlog, name
+                autlog = True
+                name = rows[0][1]
+                return render_template("succes.html", title="Вы авторизованы", text="Вы успешно авторизовались!")
+            else:
+                return render_template("log.html", error="Неверный пароль")
+        else:
+            return render_template("log.html", error="Аккаунт с такой электронной почтой не найден")
+    else:
+        return render_template("log.html", error="Некорректный e-mail")
+
+
+@app.route('/exit')
+def exit():
+    global autlog, name
+    autlog = False
+    name = ""
+    return render_template("succes.html", title="Вы вышли", text="Вы вышли со своего аккаунта")
+
+
+@app.route('/res')
+def res():
+    return render_template("res.html")
+
+
+@app.route('/res_run', methods=['POST', 'GET'])
+def res_run():
+    data = request.form
+
+    if "@" in data["email"]:
+        print(data)
+        con = sqlite3.connect("db/Пользователи.db")
+        cur = con.cursor()
+        rezult = cur.execute('''SELECT * FROM Пользователи WHERE Email LIKE ?''', (data["email"],))
+        rows = cur.fetchall()
+        if len(rows) != 0:
+            pas1 = hashlib.md5(data["pass"].encode()).hexdigest()
+            pas2 = hashlib.md5(data["pass_again"].encode()).hexdigest()
+            if pas1 == pas2:
+                rezult = cur.execute('''UPDATE Пользователи SET Пароль = ? WHERE Email LIKE ?''',
+                                     (pas1, data["email"],))
+                con.commit()
+                global autlog, name
+                autlog = True
+                name = rows[0][1]
+                return render_template("succes.html", title="Вы поменяли пароль", text="Вы успешно поменяли пароль!")
+            else:
+                return render_template("res.html", error="Пароли не совпадают")
+        else:
+            return render_template("res.html", error="Аккаунт с такой электронной почтой не найден")
+    else:
+        return render_template("res.html", error="Некорректный e-mail")
 
 
 @app.route('/neptune')
