@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}" />
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <h3>
+      <img src="{{url_for('static', filename='img/9-32.jpg')}}"
+           alt="здесь должна была быть картинка, но не нашлась">
+    </h3>
+    <h1>Солнечная система</h1>
+    <div class="welcome">Добро пожаловать, {{ name }}!</div>
+    <a href="http://127.0.0.1:8080/exit"><div class="exit"><div class="exit_text">Выйти</div></div></a>
+    <a href="http://127.0.0.1:8080/neptune"><div title="Нептун" class="planet1"></div></a>
+    <a href="http://127.0.0.1:8080/uranus"><div title="Уран" class="planet2"></div></a>
+    <a href="http://127.0.0.1:8080/saturn"><div title="Сатурн" class="planet3"></div></a>
+    <a href="http://127.0.0.1:8080/jupiter"><div title="Юпитер" class="planet4"></div></a>
+    <a href="http://127.0.0.1:8080/mars"><div title="Марс" class="planet5"></div></a>
+    <a href="http://127.0.0.1:8080/earth"><div title="Земля" class="planet6"></div></a>
+    <a href="http://127.0.0.1:8080/venus"><div title="Венера" class="planet7"></div></a>
+    <a href="http://127.0.0.1:8080/mercury"><div title="Меркурий" class="planet8"></div></a>
+    <a href="http://127.0.0.1:8080/sun"><div title="Солнце" class="sun"></div></a>
+  </body>
+</html>

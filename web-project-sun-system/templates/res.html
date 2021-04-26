@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/res_style.css')}}" />
+        <title>Восстановление пароля</title>
+    </head>
+    <body>
+        <h1>Восстановление пароля</h1>
+        <form action="http://127.0.0.1:8080/res_run" method="POST">
+            <input class="email" name="email" placeholder="Введите ваш e-mail">
+            <input class="pass" name="pass" placeholder="Придумайте новый пароль" type="password">
+            <input class="pass_again" name="pass_again" placeholder="Повторите пароль" type="password">
+            <input type="submit" class="sub" value="Изменить пароль">
+        </form>
+        <a href="http://127.0.0.1:8080/log"><div class="log">Войти</div></a>
+        <a href="http://127.0.0.1:8080/reg"><div class="reg">Зарегистрироваться</div></a>
+        <div class="error">{{ error }}</div>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/log_style.css')}}" />
+        <title>Авторизация</title>
+    </head>
+    <body>
+        <h1>Авторизация</h1>
+        <form action="http://127.0.0.1:8080/log_run" method="POST">
+            <input class="email" name="email" placeholder="Введите ваш e-mail">
+            <input class="pass" name="pass" placeholder="Введите пароль" type="password">
+            <input type="submit" class="sub" value="Войти">
+        </form>
+        <a href="http://127.0.0.1:8080/reg"><div class="reg">Зарегистрироваться</div></a>
+        <a href="http://127.0.0.1:8080/res"><div class="restore">Восстановить пароль</div></a>
+        <div class="error">{{ error }}</div>
+    </body>
+</html>

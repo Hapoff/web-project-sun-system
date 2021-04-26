@@ -1,0 +1,161 @@
+body {
+    background-color: black;
+}
+
+img {
+  margin-left: 250px;
+}
+
+.planet1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  margin-top: 145px;
+  margin-left: 405px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+ }
+
+.planet1:hover {
+    box-shadow: 0 0 30px #94bda3
+}
+
+.planet2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  margin-top: 172px;
+  margin-left: 463px;
+  width: 67px;
+  height: 67px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.planet2:hover {
+    box-shadow: 0 0 30px #1d8b82
+}
+
+.planet3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  margin-top: 198px;
+  margin-left: 532px;
+  width: 96px;
+  height: 96px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.planet3:hover {
+    box-shadow: 0 0 30px #958671
+}
+
+.planet4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  margin-top: 250px;
+  margin-left: 628px;
+  width: 92px;
+  height: 92px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.planet4:hover {
+    box-shadow: 0 0 30px #a87e54
+}
+
+.planet5 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  margin-top: 365px;
+  margin-left: 825px;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.planet5:hover {
+    box-shadow: 0 0 30px #c2803a
+}
+
+.planet6 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  margin-top: 391px;
+  margin-left: 874px;
+  width: 58px;
+  height: 58px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.planet6:hover {
+    box-shadow: 0 0 30px #edfdfa
+}
+
+.planet7 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  margin-top: 427px;
+  margin-left: 942px;
+  width: 43px;
+  height: 43px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.planet7:hover {
+    box-shadow: 0 0 30px #ffe6b9
+}
+
+.planet8 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  margin-top: 463px;
+  margin-left: 1005px;
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.planet8:hover {
+    box-shadow: 0 0 30px #bc8c29
+}
+
+.sun {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  margin-top: 458px;
+  margin-left: 1070px;
+  width: 206px;
+  height: 206px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.sun:hover {
+    box-shadow: 0 0 30px #ff4407
+}
+
